@@ -1,5 +1,5 @@
-import { Chatroom } from "/scripts/chat.js";
-import { ChatUI } from "/scripts/ui.js";
+import { Chatroom } from "scripts/chat.js";
+import { ChatUI } from "scripts/ui.js";
 
 // DOM queries
 const chatList = document.querySelector(".chat-list");
