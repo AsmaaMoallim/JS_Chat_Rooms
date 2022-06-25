@@ -6,6 +6,18 @@ const chatList = document.querySelector(".chat-list");
 const newChatForm = document.querySelector(".new-chat");
 const newNameForm = document.querySelector(".new-name");
 const updatemsg = document.querySelector(".update-msg");
+const chatRooms = document.querySelector(".chat-rooms");
+
+// change room
+chatRooms.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.nodeName === "BUTTON") {
+    const room = e.target.id;
+    chatUI.clear();
+    chatroom.updateRoom(room);
+    chatroom.getChat((data) => chatUI.render(data));
+  }
+});
 
 // update name
 newNameForm.addEventListener("submit", (e) => {
