@@ -29,11 +29,13 @@ class Chatroom {
     const response = await addDoc(this.chats, chat);
     return response;
   }
-  
 }
 
 const chatroom = new Chatroom("gaming", "Asmaa");
 
 console.log(chatroom);
 
-// chatroom.addChat("hh")
+// chatroom
+//   .addChat("ffff")
+//   .then(() => console.log("chat added"))
+//   .catch((err) => console.log(err));
