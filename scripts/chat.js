@@ -1,4 +1,8 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
 import {
+  getFirestore,
   collection,
   addDoc,
   Timestamp,
@@ -8,13 +12,25 @@ import {
   orderBy,
   limit,
 } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
-import { db } from "/scripts/app.js";
-// adding a new chat documents
-// setting up a real-time listener to get new chats
-// updating the username
-// updating the room
 
-class Chatroom {
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyACjIbV7CCQoY4EISHrkzlglmQx4weREPw",
+  authDomain: "jschatroomasmaa.firebaseapp.com",
+  projectId: "jschatroomasmaa",
+  storageBucket: "jschatroomasmaa.appspot.com",
+  messagingSenderId: "238171128482",
+  appId: "1:238171128482:web:d0b508f38244e8316c4dfb",
+  measurementId: "G-WK68R35M80",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+// export const db = getFirestore(app);
+const db = getFirestore(app);
+
+export class Chatroom {
   constructor(room, username) {
     this.room = room;
     this.username = username;
@@ -51,14 +67,6 @@ class Chatroom {
           // update the ui
           callback(change.doc.data());
         }
-        // if (change.type === "modified") {
-        //   console.log("Modified chat: ", change.doc.data());
-        //   // update the ui
-        // }
-        // if (change.type === "removed") {
-        //   console.log("Removed chat: ", change.doc.data());
-        //   // update the ui
-        // }
       });
 
       //   console.log(snapshot.docChanges());
@@ -78,24 +86,24 @@ class Chatroom {
   }
 }
 
-const chatroom = new Chatroom("singing", "Asmaa");
+// const chatroom = new Chatroom("singing", "Asmaa");
 
-console.log(chatroom);
+// console.log(chatroom);
 
 // chatroom
 //   .addChat("rere")
 //   .then(() => console.log("chat added"))
 //   .catch((err) => console.log(err));
 
-chatroom.getChat((data) => {
-  console.log(data);
-});
+// chatroom.getChat((data) => {
+//   console.log(data);
+// });
 
-setTimeout(() => {
-  chatroom.updateRoom("gaming");
-  chatroom.updateName("Yahya");
-  chatroom.getChat((data) => {
-    console.log(data);
-  });
-  chatroom.addChat("hg");
-}, 3000);
+// setTimeout(() => {
+//   chatroom.updateRoom("gaming");
+//   chatroom.updateName("Yahya");
+//   chatroom.getChat((data) => {
+//     console.log(data);
+//   });
+//   chatroom.addChat("hg");
+// }, 3000);

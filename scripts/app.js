@@ -1,35 +1,16 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+import { Chatroom } from "/scripts/chat.js";
+import { ChatUI } from "/scripts/ui.js";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// DOM queries
+const cahtList = document.querySelector(".chat-list");
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyACjIbV7CCQoY4EISHrkzlglmQx4weREPw",
-  authDomain: "jschatroomasmaa.firebaseapp.com",
-  projectId: "jschatroomasmaa",
-  storageBucket: "jschatroomasmaa.appspot.com",
-  messagingSenderId: "238171128482",
-  appId: "1:238171128482:web:d0b508f38244e8316c4dfb",
-  measurementId: "G-WK68R35M80",
-};
+// class instances
+const chatUI = new ChatUI(cahtList);
+const chatroom = new Chatroom("gaming", "Nadia");
+// console.log(chatroom)
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-export const db = getFirestore(app);
-
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815,
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//   console.error("Error adding document: ", e);
-// }
+// get chats and render
+chatroom.getChat((data) => {
+  chatUI.render(data);
+    // console.log(data);
+});
