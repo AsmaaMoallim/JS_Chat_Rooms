@@ -2,6 +2,7 @@ import {
   collection,
   addDoc,
   Timestamp,
+  onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
 import { db } from "/scripts/app.js";
 // adding a new chat documents
@@ -29,6 +30,28 @@ class Chatroom {
     const response = await addDoc(this.chats, chat);
     return response;
   }
+
+  getChat(callback) {
+    onSnapshot(this.chats, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          console.log("New chat: ", change.doc.data());
+          // update the ui
+          callback(change.doc.data());
+        }
+        // if (change.type === "modified") {
+        //   console.log("Modified chat: ", change.doc.data());
+        //   // update the ui
+        // }
+        // if (change.type === "removed") {
+        //   console.log("Removed chat: ", change.doc.data());
+        //   // update the ui
+        // }
+      });
+
+      //   console.log(snapshot.docChanges());
+    });
+  }
 }
 
 const chatroom = new Chatroom("gaming", "Asmaa");
@@ -39,3 +62,7 @@ console.log(chatroom);
 //   .addChat("ffff")
 //   .then(() => console.log("chat added"))
 //   .catch((err) => console.log(err));
+
+chatroom.getChat((data) => {
+  console.log(data);
+});
