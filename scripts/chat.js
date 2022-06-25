@@ -56,8 +56,8 @@ export class Chatroom {
     let q = query(
       this.chats,
       where("room", "==", this.room),
-      orderBy("created_at"),
-      limit(5)
+      orderBy("created_at")
+      //   limit(5)
     );
 
     this.unsub = onSnapshot(q, this.chats, (snapshot) => {
@@ -75,6 +75,7 @@ export class Chatroom {
 
   updateName(username) {
     this.username = username;
+    localStorage.setItem("username", username);
   }
 
   updateRoom(room) {

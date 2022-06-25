@@ -15,7 +15,7 @@ export class ChatUI {
     const html = `
         <li class="list-group-item">
         <span class="username">${data.username}</span>
-        <span class="message">${data.mesaage}</span>
+        <span class="message">${data.message}</span>
         <div class="time">${when}</div>
     </li>
     `;
