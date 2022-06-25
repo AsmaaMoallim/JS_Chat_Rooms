@@ -50,7 +50,7 @@ newChatForm.addEventListener("submit", (e) => {
       .catch((err) => console.log(err));
   }
 });
-
+ 
 // check local storage for a name
 const username = localStorage.username ? localStorage.username : "anonymous";
 // class instances
