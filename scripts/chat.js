@@ -3,6 +3,8 @@ import {
   addDoc,
   Timestamp,
   onSnapshot,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore.js";
 import { db } from "/scripts/app.js";
 // adding a new chat documents
@@ -32,10 +34,12 @@ class Chatroom {
   }
 
   getChat(callback) {
-    onSnapshot(this.chats, (snapshot) => {
+    const q = query(this.chats, where("room", "==", this.room));
+
+    onSnapshot(q, this.chats, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
         if (change.type === "added") {
-          console.log("New chat: ", change.doc.data());
+        //   console.log("New chat: ", change.doc.data());
           // update the ui
           callback(change.doc.data());
         }
@@ -54,7 +58,7 @@ class Chatroom {
   }
 }
 
-const chatroom = new Chatroom("gaming", "Asmaa");
+const chatroom = new Chatroom("Singing", "Asmaa");
 
 console.log(chatroom);
 
