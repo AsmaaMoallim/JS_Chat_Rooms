@@ -2,7 +2,7 @@
 // clear the list of chats (when the room changes)
 // import  distanceInWordsToNow from "http://cdn.date-fns.org/v1.9.0/date_fns.min.js";
 // import distanceInWordsToNow from "http://date-fns/distance_in_words_to_now";
-import dateFns from "date-fns";
+// import dateFns from "/date-fns";
 
 export class ChatUI {
   constructor(list) {
