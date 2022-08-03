@@ -1,5 +1,5 @@
-import { Chatroom } from "./chat.js";
-import { ChatUI } from "./ui.js";
+import { Chatroom } from "/scripts/chat.js";
+import { ChatUI } from "/scripts/ui.js";
 
 // DOM queries
 const chatList = document.querySelector(".chat-list");
@@ -50,7 +50,7 @@ newChatForm.addEventListener("submit", (e) => {
       .catch((err) => console.log(err));
   }
 });
- 
+
 // check local storage for a name
 const username = localStorage.username ? localStorage.username : "anonymous";
 // class instances
