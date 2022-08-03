@@ -9,7 +9,6 @@ export class ChatUI {
   }
 
   render(data) {
-    console.log("I work (render)")
     const when = dateFns.distanceInWordsToNow(data.created_at.toDate(), {
       addSuffix: "ago",
     });
